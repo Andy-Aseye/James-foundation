@@ -5,7 +5,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -15,29 +15,34 @@ module.exports = {
         accentDark: "#ffdb4d",
         gray: "#747474",
       },
-      fontFamily:{
-        mr: ["var(--font-mr)"],
-        in: ["var(--font-in)"]
+      fontFamily: {
+        mr: ["var(--font-neue-montreal)"],
+        in: ["var(--font-in)"],
       },
-      animation:{
-        roll: "roll 24s linear infinite"
+      animation: {
+        roll: "roll 24s linear infinite",
+        slideLeftRight: "slideLeftRight 10s linear infinite",
       },
-      keyframes:{
-        roll:{
-          "0%": {transform: "translateX(100%)"},
-          "100%": {transform: "translateX(-100%)"}
-        }
+      keyframes: {
+        roll: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        slideLeftRight: {
+          "0%": { transform: "translateX(0)" },
+          "25%": { transform: "translateX(-10%)" },
+          "50%": { transform: "translateX(0)" },
+          "75%": { transform: "translateX(10%)" },
+          "100%": { transform: "translateX(0)" },
+        },
       },
-      screens:{
+      screens: {
         sxl: "1180px",
         // @media (min-width: 1180px){...}
-        xs: "480px"
+        xs: "480px",
         // @media (min-width: 480px){...}
-      }
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
 };

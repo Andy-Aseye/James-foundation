@@ -1,10 +1,11 @@
 import "./globals.css";
 import { cx } from "@/src/utils";
-import { Inter, Manrope } from "next/font/google";
+import { Inter, Manrope, Poppins } from "next/font/google";
 import Header from "@/src/components/Header";
 import Footer from "../components/Footer";
 import siteMetadata from "../utils/siteMetaData";
 import Script from "next/script";
+import localFont from "next/font/local";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,8 +19,26 @@ const manrope = Manrope({
   variable: "--font-mr",
 });
 
+const poppin = Poppins({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-pop",
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+});
+
+const neueMontreal = localFont({
+  src: [
+    {
+      path: "../../public/fonts/neue-montreal/NeueMontreal-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-neue-montreal",
+});
+
 export const metadata = {
-  metadataBase: new URL(siteMetadata.siteUrl),
+  metadataBase: siteMetadata.siteUrl ? new URL(siteMetadata.siteUrl) : null,
   title: {
     template: `%s | ${siteMetadata.title}`,
     default: siteMetadata.title, // a default is required when creating a template
@@ -60,7 +79,9 @@ export default function RootLayout({ children }) {
         className={cx(
           inter.variable,
           manrope.variable,
-          "font-mr bg-light dark:bg-dark"
+          poppin.variable,
+          neueMontreal.variable, 
+          "font-mr bg-light"
         )}
       >
         <Script id="theme-switcher" strategy="beforeInteractive">
