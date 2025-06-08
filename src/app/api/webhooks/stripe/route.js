@@ -1,13 +1,21 @@
 import { NextResponse } from 'next/server';
-import Stripe from 'stripe';
+// import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2023-10-16',
-});
+// Temporarily disabled Stripe integration for deployment
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+//   apiVersion: '2023-10-16',
+// });
 
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+// const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
 
 export async function POST(request) {
+  // Temporarily disabled Stripe webhook processing
+  return NextResponse.json(
+    { error: 'Stripe integration temporarily disabled' },
+    { status: 503 }
+  );
+
+  /* Commented out for deployment - will re-enable when Stripe is properly configured
   try {
     const body = await request.text();
     const signature = request.headers.get('stripe-signature');
@@ -84,8 +92,10 @@ export async function POST(request) {
       { status: 500 }
     );
   }
+  */
 }
 
+/* Commented out for deployment - will re-enable when Stripe is properly configured
 async function handleSuccessfulPayment(paymentIntent) {
   try {
     // Extract donation information
@@ -188,3 +198,4 @@ async function sendDonationConfirmationEmail(donationData) {
     console.error('Error sending confirmation email:', error);
   }
 }
+*/
