@@ -5,7 +5,7 @@ const siteMetadata = {
     description: 'Dedicated to empowering international students in the United States through comprehensive financial and spiritual support.',
     language: 'en-us',
     theme: 'system', // system, dark or light
-    siteUrl: '', // will be updated when deployed
+    siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://localhost:3000',
     siteLogo: '/RJ-logo.png',
     socialBanner: '/social-banner.png',
     email: '', // Add foundation email when available

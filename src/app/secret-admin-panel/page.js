@@ -177,7 +177,7 @@ export default function AdminPanel() {
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
             <h2 className="text-sm font-medium text-gray-900">
-              All Blogs ({blogs.length})
+              All Blogs ({blogs?.length || 0})
             </h2>
           </div>
           
@@ -206,7 +206,7 @@ export default function AdminPanel() {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {blogs.map((blog) => (
+                {blogs && Array.isArray(blogs) && blogs.map((blog) => (
                   <tr key={blog.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <div className="text-sm font-medium text-gray-900 truncate max-w-xs">

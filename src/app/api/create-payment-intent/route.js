@@ -1,11 +1,27 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2023-10-16',
-});
+// Check if Stripe is properly configured
+const isStripeConfigured = process.env.STRIPE_SECRET_KEY && 
+  process.env.STRIPE_SECRET_KEY !== 'sk_test_your_secret_key_here' &&
+  process.env.STRIPE_SECRET_KEY.startsWith('sk_');
+
+let stripe = null;
+if (isStripeConfigured) {
+  stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    apiVersion: '2023-10-16',
+  });
+}
 
 export async function POST(request) {
+  // Return early if Stripe is not configured
+  if (!isStripeConfigured || !stripe) {
+    return NextResponse.json(
+      { error: 'Payment processing is not configured. Please contact support.' },
+      { status: 503 }
+    );
+  }
+
   try {
     const { amount, currency = 'usd', donationType, donorInfo } = await request.json();
 

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const FeaturedPosts = ({ blogs }) => {
   // Get the first 6 blogs for horizontal scroll
-  const featuredBlogs = blogs.slice(0, 6);
+  const featuredBlogs = blogs && Array.isArray(blogs) ? blogs.slice(0, 6) : [];
 
   return (
     <section className="w-full py-16 bg-gray-50">

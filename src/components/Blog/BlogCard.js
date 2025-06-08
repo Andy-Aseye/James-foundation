@@ -129,7 +129,7 @@ const BlogCard = ({ blog }) => {
         </div>
 
         {/* Tags */}
-        {blog.tags && blog.tags.length > 0 && (
+        {blog.tags && Array.isArray(blog.tags) && blog.tags.length > 0 && (
           <div className="my-3 flex flex-wrap gap-2">
             {blog.tags.slice(0, 4).map((tag, index) => (
               <Tag

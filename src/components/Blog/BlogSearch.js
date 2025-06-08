@@ -9,11 +9,13 @@ const BlogSearch = ({ blogs }) => {
 
   // Get all unique tags from blogs
   const allTags = useMemo(() => {
+    if (!blogs || !Array.isArray(blogs)) return [];
     return [...new Set(blogs.flatMap(blog => blog.tags || []))].sort()
   }, [blogs])
 
   // Filter blogs using useMemo for performance
   const filteredBlogs = useMemo(() => {
+    if (!blogs || !Array.isArray(blogs)) return [];
     let filtered = blogs
 
     // Filter by search term
@@ -104,9 +106,9 @@ const BlogSearch = ({ blogs }) => {
         {/* Results Count */}
         <div className="mt-4 pt-4 border-t border-gray-100">
           <p className="text-sm text-gray-600">
-            {filteredBlogs.length === blogs.length
-              ? `Showing all ${blogs.length} blog${blogs.length !== 1 ? 's' : ''}`
-              : `Showing ${filteredBlogs.length} of ${blogs.length} blog${blogs.length !== 1 ? 's' : ''}`
+            {filteredBlogs.length === (blogs?.length || 0)
+              ? `Showing all ${blogs?.length || 0} blog${(blogs?.length || 0) !== 1 ? 's' : ''}`
+              : `Showing ${filteredBlogs.length} of ${blogs?.length || 0} blog${(blogs?.length || 0) !== 1 ? 's' : ''}`
             }
             {searchTerm && (
               <span> matching "{searchTerm}"</span>
