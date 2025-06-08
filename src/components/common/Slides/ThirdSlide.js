@@ -29,9 +29,7 @@ const StarRating = ({ rating, animated = false }) => {
           key={index}
           ref={(el) => (starsRef.current[index] = el)}
           className={`w-4 h-4 transition-all duration-300 ${
-            index < rating
-              ? "text-yellow-400 drop-shadow-sm"
-              : "text-gray-300"
+            index < rating ? "text-[#7cffb7] drop-shadow-sm" : "text-gray-300"
           }`}
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -70,47 +68,39 @@ const ReviewCard = ({ review, index }) => {
   return (
     <div
       ref={cardRef}
-      className="review-card flex-shrink-0 w-80 mx-4 p-6 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-2xl border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-105 hover:bg-white/15 group"
+      className="review-card flex-shrink-0 w-96 mx-4 p-6 rounded-lg border border-gray-300 shadow-sm hover:shadow-md transition-all duration-300 group h-[25vh]"
     >
-      {/* Profile Section */}
-      <div className="flex items-center mb-4">
-        <div className="relative">
+      <div className="flex items-start space-x-4">
+        {/* Profile Image */}
+        <div className="flex-shrink-0">
           <img
             src={review.image}
             alt={review.name}
-            className="w-14 h-14 rounded-full object-cover border-3 border-gradient-to-r from-yellow-400 to-yellow-600 shadow-lg group-hover:scale-110 transition-transform duration-300"
-            style={{
-              border: "3px solid",
-              borderImage: "linear-gradient(45deg, #fbbf24, #f59e0b) 1",
-            }}
+            className="w-16 h-16 rounded-full object-cover"
           />
-          <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-2 border-white shadow-sm"></div>
         </div>
-        <div className="ml-4 flex-1">
-          <h3 className="text-lg font-bold text-white group-hover:text-yellow-300 transition-colors duration-300">
-            {review.name}
-          </h3>
-          <StarRating rating={review.rating} animated={true} />
+        
+        {/* Content */}
+        <div className="flex-1 min-w-0">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-1">
+            <h3 className="text-lg font-semibold text-gray-900">
+              {review.name}
+            </h3>
+            <span className="text-xs text-gray-500">2 days ago</span>
+          </div>
+          
+          {/* Star Rating */}
+          <div className="mb-3">
+            <StarRating rating={review.rating} animated={true} />
+          </div>
+          
+          {/* Review Text */}
+          <p className="text-gray-700 text-sm leading-relaxed">
+            "{review.review}"
+          </p>
         </div>
       </div>
-
-      {/* Review Text */}
-      <div className="relative">
-        <svg
-          className="absolute -top-2 -left-2 w-8 h-8 text-yellow-400/30"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-        </svg>
-        <p className="text-gray-200 leading-relaxed pl-6 italic group-hover:text-white transition-colors duration-300">
-          "{review.review}"
-        </p>
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute top-4 right-4 w-2 h-2 bg-yellow-400 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
-      <div className="absolute bottom-4 left-4 w-1 h-1 bg-yellow-400 rounded-full opacity-40 group-hover:opacity-80 transition-opacity duration-300"></div>
     </div>
   );
 };
@@ -210,34 +200,32 @@ const ThirdSlide = () => {
     <div className="text-start w-full">
       {/* Header Section */}
       <div className="mb-12 text-center">
-        <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent mb-4">
+        <h1 className="text-5xl font-bold text-white mb-4">
           Community Reviews
         </h1>
         <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-          Hear what our community members have to say about Reverend James and his impact on their spiritual journey.
+          Hear what our community members have to say about Reverend James and
+          his impact on their spiritual journey.
         </p>
-        <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mt-6 rounded-full"></div>
+        <div className="w-24 h-1 bg-gray-600 mx-auto mt-6 rounded-full"></div>
       </div>
 
       {/* Reviews Carousel */}
-      <div 
-        ref={containerRef}
-        className="relative overflow-hidden py-8"
-      >
+      <div ref={containerRef} className="relative overflow-hidden py-8">
         {/* Gradient Overlays */}
-        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-slate-800 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-slate-800 to-transparent z-10 pointer-events-none"></div>
-        
+        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-[#1e2521] to-transparent z-10 pointer-events-none"></div>
+        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-[#1e2521] to-transparent z-10 pointer-events-none"></div>
+
         {/* Scrolling Container */}
-        <div 
+        <div
           ref={scrollRef}
           className="flex items-center"
-          style={{ width: 'fit-content' }}
+          style={{ width: "fit-content" }}
         >
           {duplicatedReviews.map((review, index) => (
-            <ReviewCard 
-              key={`${review.name}-${index}`} 
-              review={review} 
+            <ReviewCard
+              key={`${review.name}-${index}`}
+              review={review}
               index={index % reviews.length}
             />
           ))}
@@ -247,39 +235,23 @@ const ThirdSlide = () => {
       {/* Stats Section */}
       <div className="mt-16 grid grid-cols-3 gap-8 text-center">
         <div className="group">
-          <div className="text-3xl font-bold text-yellow-400 group-hover:scale-110 transition-transform duration-300">
+          <div className="text-3xl font-bold text-white group-hover:text-blue-400 group-hover:scale-110 transition-all duration-300">
             {reviews.length}+
           </div>
           <div className="text-gray-300 mt-2">Happy Members</div>
         </div>
         <div className="group">
-          <div className="text-3xl font-bold text-yellow-400 group-hover:scale-110 transition-transform duration-300">
+          <div className="text-3xl font-bold text-white group-hover:text-blue-400 group-hover:scale-110 transition-all duration-300">
             4.8
           </div>
           <div className="text-gray-300 mt-2">Average Rating</div>
         </div>
         <div className="group">
-          <div className="text-3xl font-bold text-yellow-400 group-hover:scale-110 transition-transform duration-300">
+          <div className="text-3xl font-bold text-white group-hover:text-blue-400 group-hover:scale-110 transition-all duration-300">
             100%
           </div>
           <div className="text-gray-300 mt-2">Satisfaction</div>
         </div>
-      </div>
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-2 h-2 bg-yellow-400/20 rounded-full animate-pulse"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`,
-            }}
-          ></div>
-        ))}
       </div>
     </div>
   );

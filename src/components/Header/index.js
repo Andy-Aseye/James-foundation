@@ -96,7 +96,9 @@ const Header = () => {
         <div className="w-6 cursor-pointer transition-all ease duration-300">
           <div className="relative">
             <span
-              className={`absolute top-0 inline-block w-full h-0.5 rounded transition-all ease duration-200 ${isScrolled ? 'bg-dark' : 'bg-light'}`}
+              className={`absolute top-0 inline-block w-full h-0.5 rounded transition-all ease duration-200 ${
+                isScrolled ? "bg-dark" : "bg-light"
+              }`}
               style={{
                 transform: click
                   ? "rotate(-45deg) translateY(0)"
@@ -106,7 +108,9 @@ const Header = () => {
               &nbsp;
             </span>
             <span
-              className={`absolute top-0 inline-block w-full h-0.5 rounded transition-all ease duration-200 ${isScrolled ? 'bg-dark' : 'bg-light'}`}
+              className={`absolute top-0 inline-block w-full h-0.5 rounded transition-all ease duration-200 ${
+                isScrolled ? "bg-dark" : "bg-light"
+              }`}
               style={{
                 opacity: click ? 0 : 1,
               }}
@@ -114,7 +118,9 @@ const Header = () => {
               &nbsp;
             </span>
             <span
-              className={`absolute top-0 inline-block w-full h-0.5 rounded transition-all ease duration-200 ${isScrolled ? 'bg-dark' : 'bg-light'}`}
+              className={`absolute top-0 inline-block w-full h-0.5 rounded transition-all ease duration-200 ${
+                isScrolled ? "bg-dark" : "bg-light"
+              }`}
               style={{
                 transform: click
                   ? "rotate(45deg) translateY(0)"
@@ -167,14 +173,17 @@ const Header = () => {
         <NavLink href="/about" className="mx-2">
           About
         </NavLink>
-        {/* <NavLink href="/contact" className="mx-2">
-          Contact
-        </NavLink> */}
         <NavLink href="/get-involved" className="mx-2">
           Get Involved
         </NavLink>
         <NavLink href="/resources" className="mx-2">
           Resources
+        </NavLink>
+        <NavLink href="/donate" className="mx-2">
+          Donate
+        </NavLink>
+        <NavLink href="/blogs" className="mx-2">
+          Blogs
         </NavLink>
       </nav>
 
@@ -187,7 +196,11 @@ const Header = () => {
           aria-label="Follow The James Foundation on Facebook"
           target="_blank"
         >
-          <FacebookIcon className={`hover:scale-125 transition-all ease duration-200 ${isScrolled ? 'text-dark' : 'text-light'}`} />
+          <FacebookIcon
+            className={`hover:scale-125 transition-all ease duration-200 ${
+              isScrolled ? "text-dark" : "text-light"
+            }`}
+          />
         </a>
         <a
           href={siteMetadata.twitter}
@@ -196,7 +209,11 @@ const Header = () => {
           aria-label="Follow The James Foundation on Twitter"
           target="_blank"
         >
-          <TwitterIcon className={`hover:scale-125 transition-all ease duration-200 ${isScrolled ? 'text-dark' : 'text-light'}`} />
+          <TwitterIcon
+            className={`hover:scale-125 transition-all ease duration-200 ${
+              isScrolled ? "text-dark" : "text-light"
+            }`}
+          />
         </a>
         <a
           href={siteMetadata.youtube}
@@ -205,7 +222,11 @@ const Header = () => {
           aria-label="Subscribe to The James Foundation on YouTube"
           target="_blank"
         >
-          <YoutubeIcon className={`hover:scale-125 transition-all ease duration-200 ${isScrolled ? 'text-dark' : 'text-light'}`} />
+          <YoutubeIcon
+            className={`hover:scale-125 transition-all ease duration-200 ${
+              isScrolled ? "text-dark" : "text-light"
+            }`}
+          />
         </a>
       </div>
     </header>

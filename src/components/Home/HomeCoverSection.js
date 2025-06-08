@@ -90,7 +90,7 @@ const HomeCoverSection = ({ blogs }) => {
 
         {/* Video Background */}
         <video
-          src="/videos/church-vid.mp4"
+          src="/videos/graduation.mp4"
           autoPlay
           loop
           muted

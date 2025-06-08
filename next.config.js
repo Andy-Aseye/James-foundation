@@ -1,6 +1,18 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-    // othor next config here...
+    // other next config here...
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: '**',
+        },
+        {
+          protocol: 'http',
+          hostname: '**',
+        },
+      ],
+    },
     compiler: {
       removeConsole: process.env.NODE_ENV === 'production' ? true : false,
     },
